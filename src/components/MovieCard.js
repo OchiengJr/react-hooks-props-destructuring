@@ -1,26 +1,29 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-// Define the MovieCard component
 function MovieCard({ title, posterSrc, genres }) {
   return (
     <div className="movie-card">
       {/* Display the movie poster */}
-      <img src={posterSrc} alt={title} />
+      <img className="movie-poster" src={posterSrc} alt={title} />
 
       {/* Display the movie title */}
-      <h2>{title}</h2>
+      <h2 className="movie-title">{title}</h2>
 
       {/* Display the movie genres */}
-      <small>{genres.join(", ")}</small>
+      <small className="movie-genres">{genres.join(", ")}</small>
     </div>
   );
 }
 
-// Set default values for props to handle cases where they are not provided
-MovieCard.defaultProps = {
-  posterSrc: "https://m.media-amazon.com/images/M/MV5BOTJjNzczMTUtNzc5MC00ODk0LWEwYjgtNzdiOTEyZmQxNzhmXkEyXkFqcGdeQXVyNzMzMjU5NDY@._V1_UY268_CR1,0,182,268_AL_.jpg",
+MovieCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  posterSrc: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-// Export the MovieCard component
-export default MovieCard;
+MovieCard.defaultProps = {
+  posterSrc: "https://via.placeholder.com/150",
+};
 
+export default MovieCard;

@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
 
-      - name: Install github-to-canvas
+      - name: Install dependencies
         run: gem install github-to-canvas
 
       # Secret stored in learn-co-curriculum Settings/Secrets
